@@ -1,0 +1,22 @@
+//*[@id="firstName"]
+//*[@id="genterWrapper"]
+//*[@id="gender-radio-1"]
+//*[@id="genterWrapper"]/div[2]
+
+//div[contains(text(),"Gender")]//following::div
+//div[contains(text(),"Gender")]//following-sibling::div
+
+npm init playwright@latest
+
+npx playwright test ./tests/example.spec.js 
+//run huda kei app open vako dekhdaina
+
+npx playwright test ./tests/example.spec.js --headed
+//run huda sabai app open vako dekhcha
+
+npx playwright test ./tests/login/login.spec.js --headed
+npx playwright test ./tests/login/newLogin.spec.js --headed
+
+npx playwright test ./tests/contactList/addContact.spec.js --headed
+
+npx playwright test ./tests/login/addContact.spec.js --headed --workers=3

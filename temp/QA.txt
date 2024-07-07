@@ -1,0 +1,101 @@
+Why testing is necessary?
+-to identify the defects
+-to reduce flaws in the component or system
+-increase overall quality of the system
+-evaluating the ease of the use of the software
+-imp(software test help acclerate developement)
+
+Testing VS Debugging
+
+QA is typically focused on adherence to proper, in order to provide confidience that the approprate levels of quality will be achieved.
+
+Errors Defects and Failures
+
+Defect, Root Causes and Effects
+
+Testing Types
+-White-box Testing
+-Black-box Testing
+
+# White-box Testing: test based on the system's internal structure or implementation
+--Unit Testing
+--Testing for memory Leaks
+--Penetration Testing
+--Path Testing
+
+# Black-box Testing: a tester doesnot have any info about the internal working of the software system focuses on behaviour of software
+--Functional Testing: Unit, Smoke, API, Regression, Component, Sanity, Integration, UI Testing(Imp: Sanity, Smoke, Regression for QA interns)
+--Non-functional Testing: Performance, Security, Stress, Load Volume, Recovery ,Upgrade and Installation Tests
+--Regression Testing
+
+# Change-related Testing: is designed to verify that a change to systm has been formed correctly and foesnot have any advece effects on the system as a consequence
+Types:
+        -Functional Testing
+        -Smoke Testing
+        -Regression Testing
+        -Build Verification Testing
+        -Sanity Testing
+
+# Testing Techniques: A protocol to design a better test cases and shape a proper testing workflow.
+White-box Testing:
+        -Statement Coverage(Sabai ek na ke chotintest vako huna parcha)
+        -Decision Coverage(if else ma check garni)
+        -Multiple Concilation Coverage(Condition Check garni a=b or/and a=c)
+        -Control Flow Testing(application ko flow kasari lagni according to requirement and tei aanusar test case haru design garni)
+        -Data Flow Testing(data haru test ma kasari manage garni eg: age ma -1 halni)
+        **yeti matra huadina aaruni huncha mainly chai yo use vaira huncha**
+
+Black-box Testing:
+        -Equivalance Class Testing(eg 1000 ota test case di jana le execute garda 2weeks lagcha so teslai milauni aani kaam banauni)
+        -Boundary Value Testing(eg age 0-150 huncha ni ta integer haru -11111 to +11112 huncha so age ko lagi specific range set gardini)
+        -Decision Table Testing(eg hamro each requirement ra each test case map garni ho jasle garda requiremnt ra testcase miss nahos)
+        **yeti matra huadina aaruni huncha mainly chai yo use vaira huncha**
+
+Experienced-based Test Techniques
+        proper testing flow aanusar nagai out of the box afno knowledge aanusar test garni
+
+        -Error Guessing(eg kasto error ka huna sakcah guess garera test garni , k huna sakcha ta possible scenario in an application)
+        -Explotary Testing/Monkey Testing(eg j maanlaggyo tei explore garera test garni login garda double click garera test garni k huncha vhanera badar ko jasto)
+        -Checklist-based Testing(eg hami sanga set of test case huncha eg 1000, userko requirement aanusar sabai check nagari chaini chaini testcase banayera tei aanusar check garni)
+
+# Test Plan: is a detail document ho jun ma test ko process, test kosley garni kaile garni mention garera detail plan gareko huncha.
+It should include:
+        -Analyze the product
+        -Design test strategy
+        -Define test objectives
+        -Plan test environment
+        -Resource planning
+        -Define test creteria
+        -Schedule estimation
+        -Determine test deliverables
+
+# Test Scope:
+
+# Test Approach:
+
+# Test Tool:
+
+# Risk & Mitigation:
+
+# Test Analysis: hamro yo project ma kasto kasto scenario aaucha vhanera analysis garni ho. Goal is to gather requirements and define the goal objectives.
+
+# Test Management: consists of organizing , controlling, ensuring the visibility of testing process. It consists of series of activities.
+
+# Requirement Traceability Matrix(RTM): requirement ko lagi test case xuttauni eg: reqd no1 ko lagi test case 2 7 9 lai tick garni paci test garna
+
+# Test Scenario: It is a collective set of test case which helps testing team to determine positive and negative charactertics of a project.
+
+# Test Case: is a set of actions executed to verify a particular feature or functionality fo your software application.
+        -Test Data: user leS test garna input garni sabai data ho during test execution
+        -(See in Excel/Sheets)
+        -
+        -
+        -
+# Test Organization
+	#Test Estimation:determine how long and how much the testing cost.
+		it estimates: resource, time, human skill, cost 
+	#how to estimate?
+
+	#risk analysis: test garda garda server down vayo.
+
+

@@ -1,0 +1,36 @@
+{
+        "validUser":{
+            "username": "standard_user",
+            "password": "secret_sauce"
+        },
+
+        "invalidUser":{
+            "username": "invalid@invalid.com"
+        },
+
+        "invalidPassword":{
+            "password": "@@@123"
+        },
+
+        "emptyUser":{
+            "username": ""
+        },
+
+        "emptyPassword":{
+            "password": ""
+        }, 
+
+        "addContact":{
+            "username": "roharzan@gmail.com",
+            "password": "Rohan@123",
+
+            "firstName": "Rohan", 
+            "lastName": "Maharjan",
+
+            "firstName1": "Sumit", 
+            "lastName1": "Prazapati",
+            
+            "firstName2": "Sujin", 
+            "lastName2": "Dangol"
+        }
+}
