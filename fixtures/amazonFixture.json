@@ -1,0 +1,14 @@
+{
+    "validUser":{
+        "username": "justforyutube07@gmail.com",
+        "password": "3Y+?*,t/5vAL4k/"
+    },
+
+    "invalidUser":{
+        "username": "invalid@invalid.com"
+    },
+
+    "invalidPassword":{
+        "password": "abc@@@123"
+    }
+}
