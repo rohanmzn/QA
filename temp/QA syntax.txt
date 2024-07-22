@@ -20,3 +20,14 @@ npx playwright test ./tests/login/newLogin.spec.js --headed
 npx playwright test ./tests/contactList/addContact.spec.js --headed
 
 npx playwright test ./tests/login/addContact.spec.js --headed --workers=3
+
+npx playwright test ./tests/sauceDemo.spec.js --headed
+
+SauceDemoTemp wala without pageobjects wala majale run vaircha error user ma checout ma nathichni garera banauna baki error msg cha ki nai chek haniracha
+baki tinta failed nai aauna parcha
+-regression ma duita pic ma bango cha actual ar expected img ma vhanera
+-performance glitch ma slow load vako vayera
+- image issue ma sabai image same vayera
+
+pageobjects banayera garya k garya garya thaxaina
+

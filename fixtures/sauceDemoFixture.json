@@ -1,0 +1,28 @@
+{
+    "users": [
+      "standard_user",
+      "locked_out_user",
+      "problem_user",
+      "performance_glitch_user",
+      "error_user",
+      "visual_user"
+    ],
+
+    "password": "secret_sauce",
+
+    "itemsToAdd": [
+    "[data-test=\"add-to-cart-sauce-labs-backpack\"]",
+    "[data-test=\"add-to-cart-sauce-labs-bike-light\"]",
+    "[data-test=\"add-to-cart-sauce-labs-bolt-t-shirt\"]",
+    "[data-test=\"add-to-cart-sauce-labs-fleece-jacket\"]",
+    "[data-test=\"add-to-cart-sauce-labs-onesie\"]",
+    "[data-test=\"add-to-cart-test.allthethings()-t-shirt-(red)\"]"
+  ],
+
+  "checkout": {
+    "firstName": "Rohan",
+    "lastName": "Maharjan",
+    "postalCode": "44600"
+  }
+  }
+  
