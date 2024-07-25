@@ -24,10 +24,16 @@ npx playwright test ./tests/login/addContact.spec.js --headed --workers=3
 npx playwright test ./tests/sauceDemo.spec.js --headed
 
 SauceDemoTemp wala without pageobjects wala majale run vaircha error user ma checout ma nathichni garera banauna baki error msg cha ki nai chek haniracha
-baki tinta failed nai aauna parcha
+baki tinta failed nai aauna parcha(outdated cha)
+
+
+pageobjects banayera garya k garya garya thaxaina - MILAISAKE 
+
 -regression ma duita pic ma bango cha actual ar expected img ma vhanera
 -performance glitch ma slow load vako vayera
 - image issue ma sabai image same vayera
+-error user ma 6 ota add to cart click garda tinta only select
+- error user aarko ma yeuta add to cart garera last name halda lidaina + checkout step two ma finish btn click hudaina timeout exceed.
 
-pageobjects banayera garya k garya garya thaxaina
+sabai aajai milaisake 
 

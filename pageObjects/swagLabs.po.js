@@ -1,11 +1,14 @@
 const { expect } = require('@playwright/test');
 
-class SauceDemoPage {
+class SwagLabsPage {
     constructor(page) {
         this.page = page;
         this.userNameInput = page.locator('#user-name');
         this.passwordInput = page.locator('#password');
         this.loginButton = page.locator('#login-button');
+        this.sortDropdown = page.locator('//*[@id="header_container"]/div[2]/div/span/select');
+        this.productNames = page.locator('.inventory_item_name');
+        this.productPrices = page.locator('.inventory_item_price');
         this.shoppingCartLink = page.locator('.shopping_cart_link');
         this.cartItem = page.locator('.cart_item');
         this.removeButtonCSS = '[data-test="remove-sauce-labs-bike-light"]';
@@ -27,6 +30,21 @@ class SauceDemoPage {
         await this.userNameInput.fill(userName);
         await this.passwordInput.fill(password);
         await this.loginButton.click();
+    }
+
+    async selectSortOption(option) {
+        await this.page.waitForSelector('//*[@id="header_container"]/div[2]/div/span/select', { state: 'visible', timeout: 10000 });
+        await this.page.selectOption('//*[@id="header_container"]/div[2]/div/span/select', { label: option });
+    }
+
+    async getProductNames() {
+        const names = await this.productNames.allTextContents();
+        return names.map(name => name.trim());
+    }
+
+    async getProductPrices() {
+        const prices = await this.productPrices.allTextContents();
+        return prices.map(price => price.trim());
     }
 
     async addItemToCart(itemSelector) {
@@ -78,4 +96,4 @@ class SauceDemoPage {
     }
 }
 
-module.exports = SauceDemoPage;
+module.exports = SwagLabsPage;

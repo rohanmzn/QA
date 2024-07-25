@@ -1,5 +1,5 @@
 const { test, expect } = require('@playwright/test');
-const testData = require('../fixtures/sauceDemoFixture.json');
+const testData = require('../fixtures/swagLabsFixture.json');
 
 const users = testData.users;
 const password = testData.password;
