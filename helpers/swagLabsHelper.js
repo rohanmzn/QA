@@ -10,15 +10,12 @@ const itemsToAdd = testData.itemsToAdd;
 async function loginAndAddItemsToCart(page) {
     const swagLabsPage = new SwagLabsPage(page);
 
-    // Fill in the login form using fixtures for username and password
-    await swagLabsPage.login(users[0], password); // Using the first user from the users array
+    await swagLabsPage.login(users[0], password);
 
-    // Add items to the cart
     for (const item of itemsToAdd) {
         await swagLabsPage.addItemToCart(item);
     }
 
-    // Open the menu and reset the cart
     await page.getByRole('button', { name: 'Open Menu' }).click();
     await page.locator('[data-test="reset-sidebar-link"]').click();
     await page.getByRole('button', { name: 'Close Menu' }).click();
