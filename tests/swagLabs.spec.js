@@ -31,8 +31,6 @@ users.forEach(user => {
 test('Login with empty username and handle error', async ({ page }) => {
     const swagLabsPage = new SwagLabsPage(page);
     await swagLabsPage.login('', password);
-
-    // Verify error message for empty username
     await swagLabsPage.verifyErrorMessage('Epic sadface: Username is required');
 });
 
@@ -40,8 +38,6 @@ test('Login with empty username and handle error', async ({ page }) => {
 test('Login with empty password and handle error', async ({ page }) => {
     const swagLabsPage = new SwagLabsPage(page);
     await swagLabsPage.login('standard_user', '');
-
-    // Verify error message for empty password
     await swagLabsPage.verifyErrorMessage('Epic sadface: Password is required');
 });
 
@@ -49,8 +45,6 @@ test('Login with empty password and handle error', async ({ page }) => {
 test('Login with wrong username and handle error', async ({ page }) => {
     const swagLabsPage = new SwagLabsPage(page);
     await swagLabsPage.login('wrong_user', password);
-
-    // Verify error message for wrong username
     await swagLabsPage.verifyErrorMessage('Epic sadface: Username and password do not match any user in this service');
 });
 
@@ -58,8 +52,6 @@ test('Login with wrong username and handle error', async ({ page }) => {
 test('Login with wrong password and handle error', async ({ page }) => {
     const swagLabsPage = new SwagLabsPage(page);
     await swagLabsPage.login('standard_user', 'wrong_password');
-
-    // Verify error message for wrong password
     await swagLabsPage.verifyErrorMessage('Epic sadface: Username and password do not match any user in this service');
 });
 
@@ -67,16 +59,12 @@ test('Login with wrong password and handle error', async ({ page }) => {
 test('Login with empty username and password', async ({ page }) => {
     const swagLabsPage = new SwagLabsPage(page);
     await swagLabsPage.login('', '');
-
-    // Verify error message for wrong password
     await swagLabsPage.verifyErrorMessage('Epic sadface: Username is required');
 });
 
 test('Login with valid username and empty password', async ({ page }) => {
     const swagLabsPage = new SwagLabsPage(page);
     await swagLabsPage.login('standard_user', '');
-
-    // Verify error message for wrong password
     await swagLabsPage.verifyErrorMessage('Epic sadface: Password is required');
 });
 
@@ -94,14 +82,13 @@ test('Add multiple items to cart, view product description, remove item, and com
     await expect(swagLabsPage.cartItem).toHaveCount(6);
 
     // Remove one item from the cart using Playwright methods directly
-    await page.click('xpath=//*[@id="remove-sauce-labs-bike-light"]'); // Adjust XPath as needed
+    await page.click('xpath=//*[@id="remove-sauce-labs-bike-light"]');
     await expect(swagLabsPage.cartItem).toHaveCount(5);
 
     // View product description and remove an item
     await swagLabsPage.viewProductDescription('//*[@id="item_4_title_link"]/div');
-    await page.screenshot({ path: '../test-result/debugging/cart_page.png' }); // Take a screenshot for debugging
-
-    await page.click('xpath=//*[@id="remove"]'); // Adjust XPath as needed
+    await page.screenshot({ path: '../test-result/debugging/cart_page.png' });
+    await page.click('xpath=//*[@id="remove"]');
 
     // Go back to the cart
     await swagLabsPage.goToCart();
@@ -154,7 +141,7 @@ test('Check loading time for performance_glitch_user', async ({ page }) => {
     const loadTime = end - start;
 
     console.log(`Load time: ${loadTime}ms`);
-    expect(loadTime).toBeLessThan(5000); // Example threshold for acceptable load time
+    expect(loadTime).toBeLessThan(5000); // Example for acceptable load time
 });
 
 // Test for problem_user's image issue
@@ -192,8 +179,7 @@ test('Login with error_user and handle checkout-> finish issues', async ({ page 
     await swagLabsPage.login('error_user', password);
 
     // Add only the first item from the itemsToAdd array
-    const itemToAdd = itemsToAdd[0]; // Adjust this index if you want a specific item
-
+    const itemToAdd = itemsToAdd[0];
     try {
         await swagLabsPage.addItemToCart(itemToAdd);
     } catch (error) {
@@ -201,7 +187,7 @@ test('Login with error_user and handle checkout-> finish issues', async ({ page 
     }
 
     await swagLabsPage.goToCart();
-    await expect(swagLabsPage.cartItem).toHaveCount(1); // Expecting only 1 item in the cart
+    await expect(swagLabsPage.cartItem).toHaveCount(1);
 
     // Proceed to checkout
     await swagLabsPage.proceedToCheckout();
@@ -216,7 +202,7 @@ test('Login with error_user and handle checkout-> finish issues', async ({ page 
     } catch (error) {
         console.error('Error during checkout:', error.message);
         await page.screenshot({ path: '../test-result/debugging/checkout_error_state.png' }); // Take a screenshot for inspection
-        throw error; // Rethrow to mark the test as failed
+        throw error;
     }
 
     // Verify the order completion
@@ -260,8 +246,7 @@ test.describe('Social Media Links', () => {
     test('should open the correct social media pages in new popups', async ({ page }) => {
         const swagLabsPage = new SwagLabsPage(page);
 
-        // Fill in the login form using fixtures for username and password
-        await swagLabsPage.login(users[0], password); // Using the first user from the users array
+        await swagLabsPage.login(users[0], password);
 
         // Click the Twitter link and verify the URL in the new popup
         const twitterPromise = page.waitForEvent('popup');
@@ -284,15 +269,15 @@ test.describe('Social Media Links', () => {
         await linkedinPage.waitForLoadState();
         expect(linkedinPage.url()).toBe('https://www.linkedin.com/company/sauce-labs/');
     });
-  });
-test.only.describe('Reset the app state', () => {
+});
+test.describe('Reset the app state', () => {
     test('should reset the app state after adding items and verify all buttons are reset to "Add to cart"', async ({ page }) => {
         await loginAndAddItemsToCart(page);
 
         // Verify that all items have the "Add to cart" button instead of "Remove"
         for (const item of itemsToAdd) {
             const addButton = page.locator(item);
-            await expect(addButton).toBeVisible(); // "Add to cart" button should be visible
+            await expect(addButton).toBeVisible();
         }
     });
 
@@ -302,6 +287,6 @@ test.only.describe('Reset the app state', () => {
         // Verify that the cart is empty after resetting
         await page.locator('[data-test="shopping-cart-link"]').click();
         const cartItems = await page.locator('.cart_item').count();
-        expect(cartItems).toBe(0); // Cart should be empty
+        expect(cartItems).toBe(0);
     });
 });
