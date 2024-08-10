@@ -1,5 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const SwagLabsPage = require('../pageObjects/swagLabs.po');
+const { loginAndAddItemsToCart } = require('../helpers/swagLabsHelper');
 const testData = require('../fixtures/swagLabsFixture.json');
 
 const users = testData.users;
@@ -224,7 +225,7 @@ test('Login with error_user and handle checkout-> finish issues', async ({ page 
     await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html');
 });
 
-test.only('Sorting functionality: A to Z, Z to A, low to high, high to low', async ({ page }) => {
+test('Sorting functionality: A to Z, Z to A, low to high, high to low', async ({ page }) => {
     const swagLabsPage = new SwagLabsPage(page);
     await swagLabsPage.login('standard_user', password);
 
@@ -253,4 +254,54 @@ test.only('Sorting functionality: A to Z, Z to A, low to high, high to low', asy
             expect(productPrices).toEqual(sortedPrices);
         }
     }
+});
+
+test.describe('Social Media Links', () => {
+    test('should open the correct social media pages in new popups', async ({ page }) => {
+        const swagLabsPage = new SwagLabsPage(page);
+
+        // Fill in the login form using fixtures for username and password
+        await swagLabsPage.login(users[0], password); // Using the first user from the users array
+
+        // Click the Twitter link and verify the URL in the new popup
+        const twitterPromise = page.waitForEvent('popup');
+        await page.locator('[data-test="social-twitter"]').click();
+        const twitterPage = await twitterPromise;
+        await twitterPage.waitForLoadState();
+        expect(twitterPage.url()).toBe('https://x.com/saucelabs');
+
+        // Click the Facebook link and verify the URL in the new popup
+        const facebookPromise = page.waitForEvent('popup');
+        await page.locator('[data-test="social-facebook"]').click();
+        const facebookPage = await facebookPromise;
+        await facebookPage.waitForLoadState();
+        expect(facebookPage.url()).toBe('https://www.facebook.com/saucelabs');
+
+        // Click the LinkedIn link and verify the URL in the new popup
+        const linkedinPromise = page.waitForEvent('popup');
+        await page.locator('[data-test="social-linkedin"]').click();
+        const linkedinPage = await linkedinPromise;
+        await linkedinPage.waitForLoadState();
+        expect(linkedinPage.url()).toBe('https://www.linkedin.com/company/sauce-labs/');
+    });
+  });
+test.only.describe('Reset the app state', () => {
+    test('should reset the app state after adding items and verify all buttons are reset to "Add to cart"', async ({ page }) => {
+        await loginAndAddItemsToCart(page);
+
+        // Verify that all items have the "Add to cart" button instead of "Remove"
+        for (const item of itemsToAdd) {
+            const addButton = page.locator(item);
+            await expect(addButton).toBeVisible(); // "Add to cart" button should be visible
+        }
+    });
+
+    test('should reset the app state after adding items and verify the cart is empty', async ({ page }) => {
+        await loginAndAddItemsToCart(page);
+
+        // Verify that the cart is empty after resetting
+        await page.locator('[data-test="shopping-cart-link"]').click();
+        const cartItems = await page.locator('.cart_item').count();
+        expect(cartItems).toBe(0); // Cart should be empty
+    });
 });
